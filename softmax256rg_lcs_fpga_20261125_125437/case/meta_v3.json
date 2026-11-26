@@ -1,0 +1,16 @@
+{
+  "op": "softmax",
+  "num_smc": 8,
+  "out_bank": 7,
+  "out_words": 128,
+  "store_byte_base": 12288,
+  "word_bytes": 16,
+  "layout": "rgroup4",
+  "w_elems": 256,
+  "rows_per_smc_run": 4,
+  "inputs": [
+    {"name": "coeff", "byte_base": 0, "words": 5, "word_offset": 0},
+    {"name": "input", "byte_base": 4096, "words": 128, "word_offset": 0},
+    {"name": "other", "byte_base": 8192, "words": 20, "word_offset": 0}
+  ]
+}

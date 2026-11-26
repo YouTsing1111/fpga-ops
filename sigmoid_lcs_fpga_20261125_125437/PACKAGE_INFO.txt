@@ -1,0 +1,15 @@
+package=sigmoid_lcs_fpga_20261125_125437
+source_case=/home/kaicheng.yang/Desktop/ipset/1_ip/GPLPU/v1.0/2_verification/aiacc/testbench/sim/sigmoid/lcs
+packed=2026-11-25 12:55:30
+hbm_src=/home/kaicheng.yang/Desktop/ipset/1_ip/GPLPU/v1.0/2_verification/aiacc/testbench/sim/sigmoid/lcs/hbm_init
+operator=sigmoid
+num_smc=8
+out_bank=7
+out_words=8
+store_byte_base=12288
+word_bytes=16
+source_tree=ipset_test (1_cell, smi_ds_t byte-reversed lineage)
+expected_rtl_version=0x00042200
+iq_note=runner uses iq_inst_*.txt only; data_list paths are local basenames
+endian_note=do not pre-swap hex; runner reverses each 16B line at DMA/packer time
+iq_ids=0,7,8,9,12,13,16,17,18,20,21,24,25,26,27,28,29,31,32,33,34,35,38,39,40,41,63,64

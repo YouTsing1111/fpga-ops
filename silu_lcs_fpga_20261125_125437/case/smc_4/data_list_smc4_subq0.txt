@@ -1,0 +1,8 @@
+dut.gen_smc_extra.smc_more[4].u_smc_more.u_user_register.bram_bank_inst[0].u_bank_sram.memory_array bank0.hex
+dut.gen_smc_extra.smc_more[4].u_smc_more.u_user_register.bram_bank_inst[1].u_bank_sram.memory_array bank1.hex
+dut.gen_smc_extra.smc_more[4].u_smc_more.u_user_register.bram_bank_inst[2].u_bank_sram.memory_array bank2.hex
+dut.gen_smc_extra.smc_more[4].u_smc_more.u_user_register.bram_bank_inst[3].u_bank_sram.memory_array bank3.hex
+dut.gen_smc_extra.smc_more[4].u_smc_more.u_user_register.bram_bank_inst[4].u_bank_sram.memory_array bank4.hex
+dut.gen_smc_extra.smc_more[4].u_smc_more.u_user_register.bram_bank_inst[5].u_bank_sram.memory_array bank5.hex
+dut.gen_smc_extra.smc_more[4].u_smc_more.u_user_register.bram_bank_inst[6].u_bank_sram.memory_array bank6.hex
+dut.gen_smc_extra.smc_more[4].u_smc_more.u_user_register.bram_bank_inst[7].u_bank_sram.memory_array bank7.hex
