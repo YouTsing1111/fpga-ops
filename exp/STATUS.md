@@ -7,15 +7,15 @@
 | **备份** | 交付冻结 [`backup_exp1.0.5_20260721/`](./backup_exp1.0.5_20260721/)；**流程优化前** [`backup_exp1.0.5_pre_flow_opt_20260723/`](./backup_exp1.0.5_pre_flow_opt_20260723/) · 流程账本 [`FLOW_ANALYSIS.md`](./FLOW_ANALYSIS.md) |
 | **精度** | 对 Host：**100% ULP=0**（N=10000，x∈[-100,100]）；对 Math（安全域有限）max ULP≈**61**（算法间隙） |
 | **算法** | 半整数归约 \(r\in[-0.25,0.25]\) + Remez + √2 + **k flush**；Host **n=RN(tw) 魔法数**（旧 ⌊tw+0.5⌋ 已删） |
-| **详述** | [`README.md`](./README.md) · 流程 [`FLOW_ANALYSIS.md`](./FLOW_ANALYSIS.md) |
+| **详述** | [`README.md`](./README.md) · 长文 [`README_FULL.md`](./README_FULL.md) · 流程 [`FLOW_ANALYSIS.md`](./FLOW_ANALYSIS.md) |
+| **墙钟（本树）** | **≈115 cyc/word** = P1 **56** + P2 **59**（flush∥Horner；Horner gap5） |
 
 ## ★ 重要结论
 
 - **实现闭环**：硬件忠实复现金模型；再提升 vs Math 精度需 **改算法**，不是修微码对齐。  
-- **Flush**：`k≤-126→0`，`k≥127→+Inf`（与 RTL 实测一致）。
-- **Host 归约（2026-07-23）**：`n = RN(tw)`（`1.5·2²³` 魔法数）；常规域与旧 floor 一致，`tw=*.5` tie 最多差 3 ULP。  
-- **RTL P1 魔法数 RN（2026-07-23）**：与 Host 同构（`tw+MAGIC` + `bits−MAGIC`）；**P1 108→97**；墙钟 **186→163**（含 P2 66）。需 RTL 冒烟确认。  
-- **P2 RtoVR 压缩（2026-07-23）**：stage/final 13→11；P2 **78→66**。
+- **Flush**：`k≤-126→0`，`k≥127→+Inf`（与 RTL 实测一致；Merged 路径与 Horner 空隙并行，不另占墙钟）。
+- **Host/RTL 归约**：`n = RN(tw)`（`1.5·2²³` 魔法数）。  
+- **周期演进（摘要）**：186 → 163（魔法数 + P2 13→11）→ **115**（flush∥P1 尾藏进 P2 + stage gap5）；P1 尾部再压需 N=10k（奇数 √2 易炸）。
 
 ## 权威实验产物
 
