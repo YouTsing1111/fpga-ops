@@ -1,8 +1,9 @@
 # Exp（FP32）
 
-半整数归约 + Remez Horner + k 域 flush。状态见 [`STATUS.md`](./STATUS.md)；长文/归档见 [`README_FULL.md`](./README_FULL.md)；时延账本见 [`FLOW_ANALYSIS.md`](./FLOW_ANALYSIS.md)。
+半整数归约 + Remez Horner + k 域 flush。  
+状态：[`STATUS.md`](./STATUS.md) · 长文：[`README_FULL.md`](./README_FULL.md) · 时延：[`FLOW_ANALYSIS.md`](./FLOW_ANALYSIS.md)
 
-仓库根说明：[../README.md](../README.md) · FPGA 包：[`../exp_lcs_fpga_20261125_125437/`](../exp_lcs_fpga_20261125_125437/)
+仓库根：[../../README.md](../../README.md) · FPGA 包：[../../fpga/exp](../../fpga/exp)
 
 ---
 
@@ -35,10 +36,10 @@ x → t=x·log2e → tw=2t → n=RN(tw)（1.5·2²³ 魔法数）
 | 段 | 约值 | 说明 |
 |----|------|------|
 | P1 core | **56** | 含 √2；flush 不串在墙钟上 |
-| P2 | **59** | stage=10×5 + Final 9（FPMUL→FPADD gap=5） |
+| P2 | **59** | stage=10×5 + Final 9（gap=5） |
 | **墙钟 / word** | **≈115** | flush 藏进 Horner 空隙 |
 
-N=10k / 8SMC 回归目标：对 Host **100% ULP=0**（含 uflow/oflow）。P1 尾部再压易导致奇数 n（√2）全错，改 schedule 后务必大评测。
+N=10k 目标：对 Host **100% ULP=0**。P1 尾部再压易导致奇数 n（√2）全错。
 
 ---
 
@@ -47,15 +48,7 @@ N=10k / 8SMC 回归目标：对 Host **100% ULP=0**（含 uflow/oflow）。P1 �
 | Bank | 内容 |
 |------|------|
 | 2 | 输入 x |
-| 4 | 常数（log2e / MAGIC / √2 / flush 界…） |
-| 1 @0..4 | Remez；其后每 word scale |
-| 0 | r（+ scratch k/scale） |
+| 4 | 常数 |
+| 1 @0..4 | Remez；其后 scale |
+| 0 | r（+ scratch） |
 | 3 | 输出 y |
-
----
-
-## FPGA LCS
-
-板上 Load–Compute–Store 交付包见：
-
-[`../exp_lcs_fpga_20261125_125437/README.md`](../exp_lcs_fpga_20261125_125437/README.md)
